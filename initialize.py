@@ -11,7 +11,10 @@
       ``git clone https://github.com/SeattleTestbed/seash''
   * Change into the ``scripts'' subdirectory
   * Run this script: 
-      ``python initialize.py''
+      ``python initialize.py'' or "python initialize.py -s"
+        where -s activates skip-mode
+  * If Skip-mode is activated then 'initialize' would continue cloning of repos even on encountering git-errors    
+      
   * The dependencies will be checked out into ``../DEPENDENCIES''.
 
 <Note>
@@ -26,6 +29,12 @@ import sys
 
 
 config_file = open("config_initialize.txt")
+
+
+if len(sys.argv) == 2 and sys.argv[1] == '-s':
+  ignore_git_errors = True
+else:
+  ignore_git_errors = False
 
 for line in config_file.readlines():
   # Ignore comments and blank lines
@@ -42,13 +51,14 @@ for line in config_file.readlines():
   # to see if it performed correctly, and halt the program (giving debug 
   # output) if not.
   if git_process.returncode == 0:
-     print "Done!"
+    print "Done!"
   else:
-    print "*** Error checking out repo. Git returned status code", git_process.returncode
-    print "*** Git messages on stdout: '" + stdout_data + "'."
-    print "*** Git messages on stderr: '" + stderr_data + "'."
-    print
-    print """These errors need to be fixed before the build process can proceed. In 
+      print "*** Error checking out repo. Git returned status code", git_process.returncode
+      print "*** Git messages on stdout: '" + stdout_data + "'."
+      print "*** Git messages on stderr: '" + stderr_data + "'."
+      print
+      if not ignore_git_errors:
+        print """Since the skip-mode is off, these errors need to be fixed before the build process can proceed. In 
 doubt, please contact the Seattle development team at 
 
    seattle-devel@googlegroups.com
@@ -56,8 +66,12 @@ doubt, please contact the Seattle development team at
 and supply all of the above information. Thank you!
 
 """
-    sys.exit(1)
-
+        print
+        sys.exit(1)
+      else:
+        print "Continuing with the cloning of directories as skip-mode is active"
+        print
+        continue
 
 # If there is a readme file, show it to the user. 
 try:
