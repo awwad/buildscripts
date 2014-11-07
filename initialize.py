@@ -2,6 +2,13 @@
 <Program>
   initialize.py 
 
+<Started>
+  August, 2014
+
+<Authors>
+  Albert Rafetseder
+  Chintan Choksi
+  
 <Purpose>
   This script does a ``git clone'' of all the dependent repositories
   of a Seattle component.
@@ -11,11 +18,12 @@
       ``git clone https://github.com/SeattleTestbed/seash''
   * Change into the ``scripts'' subdirectory
   * Run this script: 
-      ``python initialize.py'' or "python initialize.py -s"
-        where -s activates skip-mode
-  * If Skip-mode is activated then 'initialize' would continue cloning of repos even on encountering git-errors    
-      
-  * The dependencies will be checked out into ``../DEPENDENCIES''.
+      ``python initialize.py''
+  * The dependencies will be checked out into ``../DEPENDENCIES''. 
+  *``initialize.py'' will get the list of dependencies to check-out from ``initialize.txt" file.
+  * During check-out, if there is a readme file associated with a repository, then it will be printed on terminal.
+  * Once this is done, run the build.py script to import the necessary files into a desired target folder.
+  * Run build file as:``python build.py''. 
 
 <Note>
   While this file is redistributed with every buildable Seattle repo, 
@@ -53,12 +61,12 @@ for line in config_file.readlines():
   if git_process.returncode == 0:
     print "Done!"
   else:
-      print "*** Error checking out repo. Git returned status code", git_process.returncode
-      print "*** Git messages on stdout: '" + stdout_data + "'."
-      print "*** Git messages on stderr: '" + stderr_data + "'."
-      print
-      if not ignore_git_errors:
-        print """Since the skip-mode is off, these errors need to be fixed before the build process can proceed. In 
+    print "*** Error checking out repo. Git returned status code", git_process.returncode
+    print "*** Git messages on stdout: '" + stdout_data + "'."
+    print "*** Git messages on stderr: '" + stderr_data + "'."
+    print
+    if not ignore_git_errors:
+      print """Since the skip-mode is off, these errors need to be fixed before the build process can proceed. In 
 doubt, please contact the Seattle development team at 
 
    seattle-devel@googlegroups.com
@@ -66,12 +74,12 @@ doubt, please contact the Seattle development team at
 and supply all of the above information. Thank you!
 
 """
-        print
-        sys.exit(1)
-      else:
-        print "Continuing with the cloning of directories as skip-mode is active"
-        print
-        continue
+      print
+      sys.exit(1)
+    else:
+      print "Continuing with the cloning of directories as skip-mode is active"
+      print
+      continue
 
 # If there is a readme file, show it to the user. 
 try:
