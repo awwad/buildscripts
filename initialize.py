@@ -1,6 +1,13 @@
 """
 <Program>
   initialize.py 
+  
+<Started>
+  August, 2014
+
+<Authors>
+  Albert Rafetseder
+  Chintan Choksi
 
 <Purpose>
   This script does a ``git clone'' of all the dependent repositories
@@ -12,7 +19,11 @@
   * Change into the ``scripts'' subdirectory
   * Run this script: 
       ``python initialize.py''
-  * The dependencies will be checked out into ``../DEPENDENCIES''.
+  * The dependencies will be checked out into ``../DEPENDENCIES''. 
+  *``initialize.py'' will get the list of dependencies to check-out from ``initialize.txt" file.
+  * During check-out, if there is a readme file associated with a repository, then it will be printed on terminal.
+  * Once this is done, run the build.py script to import the necessary files into a desired target folder.
+  * Run build file as:``python build.py'' 
 
 <Note>
   While this file is redistributed with every buildable Seattle repo, 
