@@ -8,13 +8,6 @@
 <Authors>
   Albert Rafetseder
   Chintan Choksi
-
-<Started>
-  August, 2014
-
-<Authors>
-  Albert Rafetseder
-  Chintan Choksi
   
 <Purpose>
   This script does a ``git clone'' of all the dependent repositories
