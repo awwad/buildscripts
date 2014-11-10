@@ -37,7 +37,7 @@ import sys
 
 
 config_file = open("config_initialize.txt")
-# config_initialize.txt contains links to repository. 
+# config_initialize.txt contains links to repository and the directory where it gets checked-out 
 # Eg: https://github.com/SeattleTestbed/seash ../DEPENDENCIES/seash
 
 if len(sys.argv) == 2 and sys.argv[1] == '-s':
