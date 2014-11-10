@@ -27,14 +27,10 @@
   * Run this script: 
       ``python initialize.py''
   * The dependencies will be checked out into ``../DEPENDENCIES''. 
-  *``initialize.py'' will get the list of dependencies to check-out from ``initialize.txt" file.
+  *``initialize.py'' will get the list of dependencies to check-out from ``config_initialize.txt" file.
   * During check-out, if there is a readme file associated with a repository, then it will be printed on terminal.
   * Once this is done, run the build.py script to import the necessary files into a desired target folder.
-<<<<<<< HEAD
   * Run build file as:``python build.py'' 
-=======
-  * Run build file as:``python build.py'' 
->>>>>>> origin/master
 
 <Note>
   While this file is redistributed with every buildable Seattle repo, 
