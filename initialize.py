@@ -37,7 +37,8 @@ import sys
 
 
 config_file = open("config_initialize.txt")
-
+# config_initialize.txt contains links to repository. 
+# Eg: https://github.com/SeattleTestbed/seash ../DEPENDENCIES/seash
 
 if len(sys.argv) == 2 and sys.argv[1] == '-s':
   ignore_git_errors = True
