@@ -9,5 +9,5 @@ and a "master copy" of each script (and thus the most up-to-date version) is kep
 a `git clone` of all the dependent repositories of a Seattle Testbed component.  `build.py` generates
 runnable components out of source code that has been checked out.
 
-[Insructions](https://seattle.poly.edu/wiki/BuildInstructions) are available that cover every step of the
+[Instructions](https://seattle.poly.edu/wiki/BuildInstructions) are available that cover every step of the
 Seattle Testbed build process and explain how these build scripts work.
