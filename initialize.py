@@ -42,9 +42,10 @@ import os
 import sys
 
 
+# config_initialize.txt contains links to repository and the directory where it
+# gets checked-out.
+# E.g.: https://github.com/SeattleTestbed/seash ../DEPENDENCIES/seash
 config_file = open("config_initialize.txt")
-# config_initialize.txt contains links to repository and the directory where it gets checked-out 
-# Eg: https://github.com/SeattleTestbed/seash ../DEPENDENCIES/seash
 
 if len(sys.argv) == 2 and sys.argv[1] == '-s':
   ignore_git_errors = True
