@@ -1,8 +1,9 @@
 buildscripts
 ============
 
-Build Seattle Testbed components from source code available on Github.  Built components may be executed
-and tested.
+This repository contains the set of helper scripts that make Seattle Testbed components executable from their source
+code.   This often include copying files to the appropriate directories, cloning repositories that are needed
+from Github, and setting up the tests for a repository.  Built components may be executed and tested.
 
 The `initialize.py` and `build.py` scripts are redistributed with every buildable Seattle Testbed repository
 and a "master copy" of each script (and thus the most up-to-date version) is kept here.  `initialize.py` does
