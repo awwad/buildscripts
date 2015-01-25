@@ -10,31 +10,47 @@
   Chintan Choksi
   
 <Purpose>
-  This script does a ``git clone'' of all the dependent repositories
+  This script does a "git clone" of all the dependent repositories
   of a Seattle component.
 
 <Usage>
   * Clone the repository you would like to build on your machine, e.g. using 
-      ``git clone https://github.com/SeattleTestbed/seash''
+      "git clone https://github.com/SeattleTestbed/seash"
   
-  * Change into the ``scripts'' subdirectory
+  * Change into the "scripts" subdirectory
   
-  * Run this script: ``python initialize.py''
+  * Run this script: "python initialize.py [-s]"
   
-  * The dependencies will be checked out into ``../DEPENDENCIES''
+  * The dependencies will be checked out into "../DEPENDENCIES"
   
-  *``initialize.py'' will get the list of dependencies to check-out from
-    ``config_initialize.txt" file.
+  *"initialize.py" will get the list of dependencies to check-out from
+    "config_initialize.txt" file.
   
   * During check-out, if there is a readme file associated with a repository,
     then it will be printed on terminal.  Once this is done, run the build.py
     script to import the necessary files into a desired target folder.  Run
-    build file as:``python build.py'' 
+    build file as: "python build.py"
+
+  The "-s" command-line option is optional, and activates skip mode.  Skip
+  mode is useful to
+
+  (1) Save you from re-downloading stuff that you have on your local machine
+  (and can copy over via "cp -R" or similar).
+  
+  (2) Test local modifications that you have in your working copy without
+  having to first commit them somewhere and then hack the init config, but
+  
+  Skip mode does not check whether the repos that exist in "DEPENDENCIES/" are
+  complete, in a working state, or are on the branch specified in
+  "config_initialize.txt".  Consequently, while skip mode sounds like a good
+  thing to have if you want to pick up the initialization process again after
+  interrupting it, it is also pretty dangerous (as in: weird build/runtime
+  problems) and should be used with extreme care.
 
 <Note>
   While this file is redistributed with every buildable Seattle repo, 
-  the ``master copy'' (and thus the most up-to-date version) is kept 
-  at https://github.com/SeattleTestbed/buildscripts
+  the "master copy" (and thus the most up-to-date version) is kept 
+  at: https://github.com/SeattleTestbed/buildscripts
 """
 
 import subprocess
