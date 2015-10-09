@@ -69,8 +69,9 @@ else:
   ignore_git_errors = False
 
 for line in config_file.readlines():
+  line = line.strip() # <~> fixes issues #7 and #8. #7: initialize.py may clone into dirnames containing \r) by stripping whitespace that may include carriage returns from windows machines editing the config files.
   # Ignore comments and blank lines
-  if line.startswith("#") or line.strip() == '':
+  if line.startswith("#") or line == '': # <~> removing .strip() in 2nd check - now unnecessary, as of fix in line above
     continue
 
   # If we end up here, the line contains a Git URL (+options?) for us to clone
